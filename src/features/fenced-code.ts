@@ -224,6 +224,8 @@ class CodeBlockView implements NodeView {
 
     try {
       let svgText = rawText.trim();
+      // Auto-clean any Markdown link syntax accidentally copied into attributes, e.g. xmlns="[http://...](http://...)"
+      svgText = svgText.replace(/="\[([^\]]+)\]\([^)]+\)"/g, '="$1"');
       const svgMatch = svgText.match(/<svg[\s\S]*<\/svg>/i);
       if (svgMatch) {
         svgText = svgMatch[0];

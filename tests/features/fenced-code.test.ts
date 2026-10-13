@@ -83,4 +83,21 @@ describe("fenced-code: SVG live preview", () => {
     editor.destroy();
     host.remove();
   });
+
+  test("auto-cleans markdown link syntax in xmlns attribute", () => {
+    const host = document.createElement("div");
+    document.body.appendChild(host);
+    const md = '```svg\n<svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="#4f46e5" /></svg>\n```';
+    const editor = createEditor(host, { initialContent: md });
+
+    const pre = host.querySelector("pre");
+    const preview = pre?.querySelector(".cb-svg-preview");
+    const svg = preview?.querySelector("svg");
+    expect(svg).not.toBeNull();
+    expect(svg?.querySelector("circle")).not.toBeNull();
+
+    editor.destroy();
+    host.remove();
+  });
 });
+
