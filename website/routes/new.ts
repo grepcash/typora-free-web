@@ -13,7 +13,6 @@ export function newRoute(root: HTMLElement): () => void {
   main.className = "page-new";
   main.innerHTML = `
     <header class="new-menu">
-      <a class="brand" href="#/">typora-web</a>
       <div class="nav-links">
         <a href="#/" data-route="/">文档</a>
         <a href="#/new" data-route="/new" class="active">新建写作</a>

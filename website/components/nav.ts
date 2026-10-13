@@ -14,7 +14,6 @@ export function mountNav(
   const nav = document.createElement("nav");
   nav.className = "site-nav";
   nav.innerHTML = `
-    <a class="brand" href="#/">typora-web</a>
     <div class="nav-links">
       <a href="#/" data-route="/">文档</a>
       <a href="#/new" data-route="/new">新建写作</a>
